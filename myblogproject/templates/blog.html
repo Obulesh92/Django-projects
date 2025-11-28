@@ -1,0 +1,76 @@
+{% include 'header.html' %} 
+  
+  <!-- Post Hero -->
+   {% for i in allblogs %}
+ <section class="post-hero" style="background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), url('your-image.jpg') center/cover no-repeat; color: white; padding: 120px 0;">    <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+          <h1 class="display-4 fw-bold">{{i.post_title}}</h1>
+          <div class="post-meta mt-4 fs-5">
+            <i class="bi bi-calendar3"></i> November 25, 2025 • 
+            <i class="bi bi-person"></i> {{i.your_name}} • 
+            <i class="bi bi-chat"></i> 24 Comments • 
+            <i class="bi bi-clock"></i> 12 min read
+          </div>
+        </div>
+      </div>
+    </div>
+    
+</section>
+
+  <!-- Post Content -->
+  <article class="py-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 post-content">
+
+          <p class="lead">
+          {{i.Content}}
+          </p>
+          {% if i.image_link %}
+          <img src="{{i.image_link}}" alt="Bootstrap Code" class="img-fluid">
+          {% endif %}
+          <h2>Why Bootstrap 5 is Still King</h2>
+          <p>
+            Despite the rise of Tailwind and other utility frameworks, Bootstrap remains the most widely used 
+            CSS framework in the world — and for good reason...
+          </p>
+
+          <h2>Key New Features in Bootstrap 5.3+</h2>
+          <ul>
+            <li>Full CSS custom properties support</li>
+            <li>Improved dark mode capabilities</li>
+            <li>Removed jQuery dependency</li>
+            <li>Enhanced form controls</li>
+            <li>Utility API for custom classes</li>
+          </ul>
+
+          <blockquote>
+            "Bootstrap isn't just a framework — it's a complete design system that helps you build 
+            beautiful, responsive websites faster than ever." – Alex Rivera
+          </blockquote>
+
+          <h2>Pro Tips for 2025</h2>
+          <p>Here are my top recommendations...</p>
+
+          <h2>Conclusion</h2>
+          <p>
+            Bootstrap 5 continues to be an excellent choice for developers who want to build fast, 
+            beautiful, and accessible websites without sacrificing customization.
+          </p>
+
+          <!-- Share Buttons -->
+          <div class="share-buttons mt-5 pt-4 border-top">
+            <p class="mb-3 fw-bold">Share this post:</p>
+            <a href="#"><i class="bi bi-facebook"></i></a>
+            <a href="#"><i class="bi bi-twitter"></i></a>
+            <a href="#"><i class="bi bi-linkedin"></i></a>
+            <a href="#"><i class="bi bi-link-45deg"></i></a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </article>
+  {% endfor %}
+
+{% include 'footer.html' %}

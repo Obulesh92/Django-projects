@@ -1,0 +1,102 @@
+{% include 'header.html' %}
+
+<!-- Hero Section - About My Blog -->
+<section class="hero-about text-white text-center" style="background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), 
+            url('https://st2.depositphotos.com/1420973/6409/i/450/depositphotos_64095317-stock-photo-blog-concept-cloud-chart-print.jpg') center/cover no-repeat; padding: 140px 0;">
+  <div class="container">
+    <h1 class="display-3 fw-bold mb-4">About MyBlog</h1>
+    <p class="lead col-lg-8 mx-auto fs-4">
+      A simple, clean, and modern blog built with <span class="text-primary">Django</span> & <span class="text-primary">Bootstrap 5</span>
+    </p>
+    <p class="col-lg-7 mx-auto mt-4 opacity-90">
+      This blog was created to share knowledge, ideas, tutorials, and personal experiences — one post at a time.
+    </p>
+  </div>
+</section>
+
+<!-- Main About Content -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="row align-items-center g-5">
+
+      <!-- Blog Image / Illustration -->
+      <div class="col-lg-5 text-center">
+        <img src="https://images.stockcake.com/public/2/c/1/2c119b25-6ce8-4c32-8730-1f7f1d53d732_large/coding-coffee-break-stockcake.jpg" 
+     alt="MyBlog Workspace" 
+     class="img-fluid rounded shadow-lg">
+      </div>
+
+      <!-- About Text -->
+      <div class="col-lg-7">
+        <h2 class="display-5 fw-bold text-primary mb-4">Welcome to MyBlog</h2>
+        
+        <p class="lead text-muted mb-4">
+          A personal space where ideas come to life.
+        </p>
+
+        <p class="fs-5 text-dark lh-lg">
+          MyBlog started as a simple project to learn <strong>Django</strong> and <strong>Bootstrap 5</strong> — 
+          and turned into a full-featured, beautiful blog where anyone can write and publish posts instantly.
+        </p>
+
+        <p class="fs-5 text-dark lh-lg">
+          Whether you're here to read tutorials, web development tips, personal stories, or just explore clean code 
+          and design — you're in the right place.
+        </p>
+
+        <div class="row mt-5">
+          <div class="col-md-6">
+            <h5 class="fw-bold text-primary"><i class="bi bi-code-slash"></i> Built With</h5>
+            <ul class="list-unstyled mt-3">
+              <li class="mb-2"><strong>Django 4/5</strong> – Python Web Framework</li>
+              <li class="mb-2"><strong>Bootstrap 5</strong> – Responsive Design</li>
+              <li class="mb-2"><strong>SQLite</strong> – Lightweight Database</li>
+              <li class="mb-2"><strong>WhiteNoise</strong> – Static Files</li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <h5 class="fw-bold text-primary"><i class="bi bi-check2-all"></i> Features</h5>
+            <ul class="list-unstyled mt-3">
+              <li class="mb-2">Write & publish posts instantly</li>
+              <li class="mb-2">Beautiful modal form</li>
+              <li class="mb-2">Fully responsive design</li>
+              <li class="mb-2">Live on Render.com (free!)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-5">
+          <a href="/" class="btn btn-primary btn-lg me-3">
+            <i class="bi bi-journal-text"></i> Read Posts
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Optional: Fun Stats -->
+<section class="py-5 text-center bg-white">
+  <div class="container">
+    <div class="row">
+      <div class="col-6 col-md-3">
+        <h3 class="text-primary fw-bold">{{ total_posts|default:"10+" }}</h3>
+        <p class="text-muted">Posts Published</p>
+      </div>
+      <div class="col-6 col-md-3">
+        <h3 class="text-primary fw-bold">100%</h3>
+        <p class="text-muted">Open Source</p>
+      </div>
+      <div class="col-6 col-md-3">
+        <h3 class="text-primary fw-bold">Free</h3>
+        <p class="text-muted">Forever</p>
+      </div>
+      <div class="col-6 col-md-3">
+        <h3 class="text-primary fw-bold">You</h3>
+        <p class="text-muted">Are Awesome</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% include 'footer.html' %}

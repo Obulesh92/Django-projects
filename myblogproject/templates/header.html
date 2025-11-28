@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MyBlog - Clean & Modern Blog</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Bootstrap 5.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.7;
+      color: #333;
+      background-color: #f8f9fa;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+    }
+    .navbar {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1030;
+      background: rgba(255,255,255,0.98) !important;
+      backdrop-filter: blur(10px);
+    }
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://e1.pxfuel.com/desktop-wallpaper/663/243/desktop-wallpaper-3840x2160-laptop-macbook-iphone-apple-laptop.jpg') center/cover no-repeat;
+      color: white;
+      padding: 160px 0;
+      text-align: center;
+    }
+    .post-card {
+      transition: all 0.3s ease;
+      height: 100%;
+    }
+    .post-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15) !important;
+    }
+    .post-meta { color: #6c757d; font-size: 0.9rem; }
+    footer { background: #212529; color: #adb5bd; }
+
+    /* Modal Custom Styling */
+    .modal-content {
+      border: none;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    }
+    .modal-header {
+      border-bottom: none;
+      padding: 1.5rem 2rem;
+    }
+    .modal-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+    }
+    .modal-body {
+      padding: 0 2rem 2rem;
+    }
+    .btn-close {
+      background: none;
+      opacity: 0.6;
+    }
+    .btn-publish {
+      padding: 12px 32px;
+      font-size: 1.1rem;
+    }
+    .mybtn{
+      background-color: rgb(0, 56, 240);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-white shadow-sm sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold fs-3 text-primary" href="/">
+        <i class="bi bi-journal-text me-2"></i>MyBlog
+      </a>
+
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-2">
+          <li class="nav-item"><a class="nav-link px-3 py-2 rounded-3 active" href='/'>Home</a></li>
+          <li class="nav-item"><a class="nav-link px-3 py-2 rounded-3" href="/about">About</a></li>
+          <li class="nav-item"><a class="nav-link px-3 py-2 rounded-3" href="/contact">Contact</a></li>
+        </ul>
+
+        <!-- Buttons that open the modal -->
+        
+      
+      </div>
+    </div>
+  </nav>
+  <br><br><br>

@@ -1,0 +1,83 @@
+{% include 'header.html' %} 
+  
+  <!-- Hero -->
+  <section class="hero-contact text-white text-center py-5" 
+   style="background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), 
+            url('https://media.istockphoto.com/id/1688578381/photo/contact-us-telephone-envelope-letter-and-e-mail-symbols-on-wooden-round-in-row-on-table-with.jpg?s=612x612&w=0&k=20&c=KpvAirgTJ9PFfJVItLjLrjvW3_OKzxEWzM4fg17upWA=') center/cover no-repeat;
+            min-height: 50vh; display: flex; align-items: center;">
+  <div class="container">
+    <h1 class="display-4 fw-bold mb-3">Get in Touch</h1>
+    <p class="lead col-lg-8 mx-auto">Have a question or want to work together? I'd love to hear from you!</p>
+  </div>
+</section>
+
+  <!-- Contact Form + Info -->
+  <section class="py-5">
+    <div class="container">
+      <div class="contact-card mx-auto" style="max-width: 900px; ">
+        <div class="row g-5">
+          <!-- Contact Form -->
+          <div class="col-lg-8">
+            <h3>Send Me a Message</h3>
+            <form action="{% url 'contact' %}" method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="row g-3 mt-3">
+                <div class="col-md-6">
+                  <input type="text" name="your_name" class="form-control" placeholder="Your Name" required>
+                </div>
+                <div class="col-md-6">
+                  <input type="email" name="your_email" class="form-control" placeholder="Your Email" required>
+                </div>
+                <div class="col-12">
+                  <input type="text" name="subject" class="form-control" placeholder="Subject" required>
+                </div>
+                <div class="col-12">
+                  <textarea name="message" class="form-control" rows="6" placeholder="Your Message" required></textarea>
+                </div>
+                <div class="col-12">
+                  <button type="submit" class="btn btn-primary btn-submit">
+                    Send Message
+                  </button>
+                </div>
+              </div>
+            </form>
+            <small class="text-muted mt-3 d-block">
+              I usually reply within 24 hours
+            </small>
+          </div>
+
+          <!-- Contact Info -->
+          <div class="col-lg-4">
+            <h3>Contact Info</h3>
+            <div class="contact-info mt-4">
+              <div class="mb-4">
+                <i class="bi bi-envelope"></i>
+                <h6>Email</h6>
+                <p>hello@myblog.com</p>
+              </div>
+              <div class="mb-4">
+                <i class="bi bi-geo-alt"></i>
+                <h6>Location</h6>
+                <p>San Francisco, CA<br>United States</p>
+              </div>
+              <div class="mb-4">
+                <i class="bi bi-telephone"></i>
+                <h6>Phone</h6>
+                <p>+1 (555) 123-4567</p>
+              </div>
+
+              <div class="mt-5">
+                <h6>Follow Me</h6>
+                <a href="#" class="text-primary me-3 fs-4"><i class="bi bi-twitter"></i></a>
+                <a href="#" class="text-primary me-3 fs-4"><i class="bi bi-github"></i></a>
+                <a href="#" class="text-primary me-3 fs-4"><i class="bi bi-linkedin"></i></a>
+                <a href="#" class="text-primary fs-4"><i class="bi bi-instagram"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% include 'footer.html' %}
+ 
