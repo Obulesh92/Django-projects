@@ -1,24 +1,12 @@
-"""
-Django settings for myphoto project – 100% WORKING ON RENDER.COM (FREE)
-Tested and deployed successfully on 29 Nov 2025
-"""
-
 from pathlib import Path
 import os
 
-# Build paths inside the project
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# SECRET KEY – secure on Render
-SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-h+5f1@p==312*)ill0(^5j1feycc)^92&mqq=2g249x&)0+ji)')
-
-# DEBUG off on Render
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-change-this-in-production')
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+ALLOWED_HOSTS = ['*']
 
-# THIS FIXES THE DISALLOWEDHOST ERROR
-ALLOWED_HOSTS = ['*']   # ← Allows all Render domains (safe for free tier)
-
-# Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -26,14 +14,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'myphoto',
     'myphotoapp',
-    'whitenoise.runserver_nostatic',  # For static files in development
+    'whitenoise.runserver_nostatic',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',   # ← Serves static files (CSS, JS)
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -43,6 +30,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'myphoto.urls'
+WSGI_APPLICATION = 'myphoto.wsgi.application'
 
 TEMPLATES = [
     {
@@ -60,9 +48,6 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'myphoto.wsgi.application'
-
-# Database – SQLite (works perfectly)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -70,37 +55,19 @@ DATABASES = {
     }
 }
 
-# Password validation
-AUTH_PASSWORD_VALIDATORS = [
-    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
-    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
-    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
-    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
-]
-
-# Internationalization
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'Asia/Kolkata'
 USE_I18N = True
 USE_TZ = True
 
-# ─────────────────────────────────────
-# STATIC FILES (Bootstrap, CSS, JS)
-# ─────────────────────────────────────
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'assets'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# ─────────────────────────────────────
-# MEDIA FILES – IMAGES & VIDEOS (FIXED!)
-# ─────────────────────────────────────
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'  # Normal local path
-
-# THIS MAKES IMAGES & VIDEOS WORK ON RENDER (with your free disk)
+MEDIA_ROOT = BASE_DIR / 'media'
 if os.environ.get('RENDER'):
     MEDIA_ROOT = '/opt/render/project/src/media'
 
-# Default primary key
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
