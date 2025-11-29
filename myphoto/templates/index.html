@@ -3,27 +3,32 @@
 
 <body class="bg-light">
 
-    <!-- Floating Upload Button (Top Right) -->
+    <!-- Floating Upload Button (Fixed & Beautiful) -->
     <div class="position-fixed bottom-0 end-0 m-4 z-3">
-        <button class="btn btn-primary btn-lg rounded-circle shadow-lg d-flex align-items-center justify-content-center" 
-                style="width: 60px; height: 60px;" 
-                data-bs-toggle="modal" 
-                data-bs-target="#uploadPhotoModal">
-            <i class="bi bi-plus-lg fs-3"></i>
+        <button 
+            class="btn btn-primary btn-lg rounded-circle shadow-lg d-flex align-items-center justify-content-center" 
+            style="width: 70px; height: 70px;" 
+            data-bs-toggle="modal" 
+            data-bs-target="#uploadPhotoModal"
+            title="Upload New Photo">
+            <i class="bi bi-plus-lg fs-1"></i>
         </button>
-        <small class="text-white bg-dark px-3 py-1 rounded-pill d-block text-center mt-2 shadow">
-            Add Photo
-        </small>
+        <div class="text-center mt-2">
+            <small class="bg-dark text-white px-3 py-2 rounded-pill shadow fw-semibold">
+                Add Photo
+            </small>
+        </div>
     </div>
 
     <!-- Hero Section -->
-    <section class="hero-section text-white text-center d-flex align-items-center justify-content-center position-relative"
-             style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                    url('https://png.pngtree.com/thumb_back/fw800/background/20240724/pngtree-a-camera-with-blue-digital-lines-and-dots-demonstrating-the-use-image_16019262.jpg') center/cover no-repeat;
+    <section class="hero-section text-white text-center d-flex align-items-center position-relative" 
+             style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                    url('https://png.pngtree.com/thumb_back/fw800/background/20240724/pngtree-a-camera-with-blue-digital-lines-and-dots-demonstrating-the-use-image_16019262.jpg') 
+                    center/cover no-repeat; 
                     min-height: 70vh;">
-        <div class="position-relative z-2">
-            <h1 class="display-3 fw-bold mb-3">Welcome to LensVibe</h1>
-            <p class="lead fs-3 mb-4">Your beautiful photo & video gallery starts here.</p>
+        <div class="container position-relative z-2">
+            <h1 class="display-3 fw-bold mb-4">Welcome to LensVibe</h1>
+            <p class="lead fs-3 mb-5">Your beautiful photo gallery starts here.</p>
             <a href="#gallery" class="btn btn-primary btn-lg rounded-pill px-5 shadow-lg">
                 Explore Gallery
             </a>
@@ -35,13 +40,14 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <div class="input-group input-group-lg shadow-lg rounded-pill overflow-hidden">
-                        <input type="search" 
-                               id="searchInput" 
-                               class="form-control border-0 ps-4 py-3" 
-                               placeholder="Search photos by title..." 
-                               aria-label="Search photos">
-                        <button class="btn btn-light rounded-pill px-5" type="button" onclick="filterGallery()">
+                    <div class="input-group input-group-lg shadow rounded-pill overflow-hidden">
+                        <input 
+                            type="search" 
+                            id="searchInput" 
+                            class="form-control border-0 ps-5 py-3" 
+                            placeholder="Search photos by title..." 
+                            aria-label="Search">
+                        <button class="btn btn-light rounded-pill px-5 fw-bold" type="button" onclick="filterGallery()">
                             Search
                         </button>
                     </div>
@@ -56,24 +62,28 @@
             <h2 class="text-center fw-bold text-dark mb-5 display-5">Latest Photos</h2>
 
             {% if allphoto %}
-            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="photoGrid">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-5" id="photoGrid">
                 {% for photo in allphoto %}
                 <div class="col gallery-item" data-title="{{ photo.title|lower }}">
-                    <div class="card border-0 shadow hover-shadow h-100 overflow-hidden">
+                    <div class="card border-0 shadow-lg overflow-hidden h-100 hover-lift">
                         {% if photo.image %}
-                        <img src="{{ photo.image.url }}" 
-                             class="card-img-top" 
-                             alt="{{ photo.title }}" 
-                             style="height: 280px; object-fit: cover; transition: transform 0.4s;">
+                        <img 
+                            src="{{ photo.image.url }}" 
+                            class="card-img-top" 
+                            alt="{{ photo.title }}" 
+                            style="height: 300px; object-fit: cover; transition: transform 0.5s;">
                         {% else %}
-                        <div class="bg-secondary text-white d-flex align-items-center justify-content-center" style="height: 280px;">
-                            No Image
+                        <div class="bg-secondary d-flex align-items-center justify-content-center text-white" style="height: 300px;">
+                            <h4>No Image</h4>
                         </div>
                         {% endif %}
-                        <div class="card-body text-center bg-gradient text-white p-4" style="background: linear-gradient(135deg, #1e3c72, #2a5298);">
-                            <h5 class="card-title mb-2">{{ photo.title }}</h5>
-                            <p class="text-light small mb-0">
-                                <i class="bi bi-calendar3"></i> {{ photo.date|date:"d M Y" }}
+
+                        <div class="card-body text-center bg-gradient text-white p-4" 
+                             style="background: linear-gradient(135deg, #1e3c72, #2a5298);">
+                            <h5 class="card-title fw-bold mb-2" style="color: black;">{{ photo.title }}</h5>
+                            <p class="mb-0" style="color: black;">
+                                <i class="bi bi-calendar-event" style="color: black;"></i> 
+                                {{ photo.date }}
                             </p>
                         </div>
                     </div>
@@ -83,20 +93,21 @@
             {% else %}
             <div class="text-center py-5">
                 <i class="bi bi-image display-1 text-muted"></i>
-                <p class="lead mt-3 text-muted">No photos yet. Be the first to upload!</p>
+                <h3 class="mt-4 text-muted">No photos uploaded yet</h3>
+                <p class="text-muted">Be the first to share your moment!</p>
             </div>
             {% endif %}
         </div>
     </section>
 
-    <!-- Upload Photo Modal (Only ONE modal - fixed!) -->
+    <!-- Upload Photo Modal (ONLY ONE MODAL - FIXED!) -->
     <div class="modal fade" id="uploadPhotoModal" tabindex="-1" aria-labelledby="uploadModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content border-0 shadow-lg">
-                <div class="modal-header bg-primary text-white">
-                    <h5 class="modal-title fs-4" id="uploadModalLabel">
+            <div class="modal-content border-0 shadow-lg rounded-4">
+                <div class="modal-header bg-primary text-white border-0">
+                    <h4 class="modal-title fw-bold" id="uploadModalLabel">
                         Upload New Photo
-                    </h5>
+                    </h4>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body p-5">
@@ -104,29 +115,31 @@
                         {% csrf_token %}
                         
                         <div class="mb-4">
-                            <label class="form-label fw-bold text-dark">Photo Title</label>
-                            <input type="text" name="title" class="form-control form-control-lg" placeholder="e.g., Sunset at Marine Drive" required>
+                            <label class="form-label fw-bold">Photo Title</label>
+                            <input type="text" name="title" class="form-control form-control-lg rounded-pill" 
+                                   placeholder="e.g., Golden Hour at the Beach" required>
                         </div>
 
                         <div class="mb-4">
-                            <label class="form-label fw-bold text-dark">Upload Image</label>
-                            <input type="file" name="image" class="form-control form-control-lg" accept="image/*" required>
-                            <div class="form-text">Max 10MB • JPG, PNG, WebP, GIF</div>
+                            <label class="form-label fw-bold">Upload Image</label>
+                            <input type="file" name="image" class="form-control form-control-lg" 
+                                   accept="image/*" required>
+                            <div class="form-text mt-2">Supported: JPG, PNG, WebP • Max 10MB</div>
                         </div>
 
                         <div class="mb-4">
-                            <label class="form-label fw-bold text-dark">Date Taken</label>
-                            <input type="date" name="date" class="form-control form-control-lg" required>
+                            <label class="form-label fw-bold">Date Taken</label>
+                            <input type="date" name="date" class="form-control form-control-lg rounded-pill" required>
                         </div>
 
-                        <div class="d-flex gap-3 justify-content-end mt-4">
-                            <button type="button" class="btn btn-outline-secondary btn-lg px-4" data-bs-dismiss="modal">
+                        <div class="d-grid d-md-flex justify-content-end gap-3 mt-5">
+                            <button type="button" class="btn btn-outline-secondary btn-lg px-5" data-bs-dismiss="modal">
                                 Cancel
                             </button>
                             <button type="submit" class="btn btn-primary btn-lg px-5">
                                 Upload Photo
                             </button>
-                        </  </div>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -139,38 +152,42 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
-        // Live Search Function
+        // Live Search
         function filterGallery() {
             const query = document.getElementById('searchInput').value.toLowerCase().trim();
             const items = document.querySelectorAll('.gallery-item');
 
             items.forEach(item => {
-                const title = item.getAttribute('data-title') || '';
+                const title = (item.getAttribute('data-title') || '').toLowerCase();
                 item.style.display = title.includes(query) ? '' : 'none';
             });
         }
 
-        // Trigger search on input
         document.getElementById('searchInput').addEventListener('input', filterGallery);
 
-        // Hover effect on cards
-        document.querySelectorAll('.card-img-top').forEach(img => {
-            img.addEventListener('mouseenter', () => img.style.transform = 'scale(1.05)');
-            img.addEventListener('mouseleave', () => img.style.transform = 'scale(1)');
+        // Smooth hover effect
+        document.querySelectorAll('.hover-lift').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-15px)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
         });
     </script>
 
-    <!-- Hover shadow effect -->
     <style>
-        .hover-shadow {
-            transition: all 0.4s ease;
+        .hover-lift {
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
-        .hover-shadow:hover {
-            transform: translateY(-10px);
+        .hover-lift:hover {
             box-shadow: 0 20px 40px rgba(0,0,0,0.2) !important;
         }
         .card-img-top {
-            transition: transform 0.4s ease;
+            transition: transform 0.6s ease;
+        }
+        .card-img-top:hover {
+            transform: scale(1.08);
         }
     </style>
 </body>
