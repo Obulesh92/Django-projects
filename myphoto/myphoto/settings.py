@@ -8,21 +8,16 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 from pathlib import Path
 import os
-import dj_database_url  # Add this import for Postgres (pip install dj-database-url)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# Change: Use environment variable for security
 SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-h+5f1@p==312*)ill0(^5j1feycc)^92&mqq=2g249x&)0+ji)')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# Change: Detect Render environment to set DEBUG=False in production
-DEBUG = not os.getenv('RENDER')  # True locally, False on Render
-
-# Change: Allow Render's hostname
-ALLOWED_HOSTS = ['*'] if DEBUG else [os.getenv('RENDER_EXTERNAL_HOSTNAME')]
+DEBUG = False  # Set to True only for local dev
+ALLOWED_HOSTS = ['*']  # Secure for Render; override with specific hosts if needed
 
 # Application definition
 INSTALLED_APPS = [
@@ -37,8 +32,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    # Change: Add WhiteNoise for serving static files (pip install whitenoise)
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # For static files on Render
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -52,7 +46,7 @@ ROOT_URLCONF = 'myphoto.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],  # Fixed: Use BASE_DIR (was missing comma)
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -67,24 +61,15 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'myphoto.wsgi.application'
 
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
-# Option A: Recommended - PostgreSQL (free on Render)
+# Database ────────────────────── PURE SQLITE (No dj_database_url needed!) ──────────────────────
 DATABASES = {
-    'default': dj_database_url.parse(os.getenv('DATABASE_URL'), conn_max_age=600)
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': '/tmp/db.sqlite3',  # Persists better on Render free tier
+    }
 }
 
-# Option B: SQLite with persistence (requires paid Disk on Render; not recommended for production)
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': '/opt/render/project/src/db.sqlite3',  # Mount path for persistent disk
-#     }
-# }
-
 # Password validation
-# https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -101,29 +86,19 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # Internationalization
-# https://docs.djangoproject.com/en/4.2/topics/i18n/
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'Asia/Kolkata'
 USE_I18N = True
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.2/howto/static-files/
-
-# Change: Configure for WhiteNoise
+# Static files (CSS, JavaScript, Images) ── Bootstrap lives here!
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static")  # Your static folder
-]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Collect here for production
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'  # Add this
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
-# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-# Optional: Force HTTPS in production (add to urls.py or here)
-SECURE_SSL_REDIRECT = not DEBUG
