@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Add Todo</title>
+    <style>
+        body { font-family: Arial; margin: 40px; background: #f4f4f4; }
+        .box { max-width: 500px; margin: auto; background: white; padding: 40px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        input[type=text] { width: 100%; padding: 15px; font-size: 18px; border: 1px solid #ddd; border-radius: 5px; }
+        button { margin-top: 20px; padding: 15px 30px; background: #28a745; color: white; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; }
+        button:hover { background: #218838; }
+        .back { margin-top: 20px; display: inline-block; color: #007bff; }
+    </style>
+</head>
+<body>
+<div class="box">
+    <h1>Add New Todo</h1>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="title" placeholder="What needs to be done?" required autofocus>
+        <button type="submit">Add Todo</button>
+    </form>
+    <a href="{% url 'todo_list' %}" class="back">Back to List</a>
+</div>
+</body>
+</html>

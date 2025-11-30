@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Todo</title>
+    <style>
+        body { font-family: Arial; margin: 40px; background: #f4f4f4; }
+        .box { max-width: 500px; margin: auto; background: white; padding: 40px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        input[type=text] { width: 100%; padding: 15px; font-size: 18px; border: 1px solid #ddd; border-radius: 5px; margin-bottom: 20px; }
+        label { font-size: 18px; }
+        button { padding: 15px 30px; background: #007bff; color: white; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; }
+        button:hover { background: #0056b3; }
+        .back { margin-left: 20px; color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+<div class="box">
+    <h1>Edit Todo</h1>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="title" value="{{ todo.title }}" required>
+        <br>
+        <label>
+            <input type="checkbox" name="completed" {% if todo.completed %}checked{% endif %}>
+            Mark as completed
+        </label>
+        <br><br>
+        <button type="submit">Update Todo</button>
+        <a href="{% url 'todo_list' %}" class="back">Cancel</a>
+    </form>
+</div>
+</body>
+</html>
