@@ -20,6 +20,16 @@ STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',   # ← REQUIRED for collectstatic
+    'Todolistapp',
+]
+
 # Middleware – ADD WhiteNoise
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -41,3 +51,4 @@ TEMPLATES = [
         # ... rest
     },
 ]
+
