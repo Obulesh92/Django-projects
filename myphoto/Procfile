@@ -1,1 +1,0 @@
-web: gunicorn myphoto.wsgi:application --log-file -
