@@ -30,7 +30,7 @@ A complete personal blogging platform with a modern, elegant look.
 
 **Live Demo – MyBlog**  
 https://myblog-yourusername.onrender.com  
-[![Blog Live](https://img.shields.io/badge/MyBlog-Live-0066CC?style=for-the-badge&logo=render)]([https://myblog-yourusername.onrender.com](https://django-projects-4lgq.onrender.com/  ))
+[![Blog Live](https://img.shields.io/badge/MyBlog-Live-0066CC?style=for-the-badge&logo=render)](https://django-projects-4lgq.onrender.com/admin/))
 
 **Features**
 - Create, edit, and delete posts (via Django admin or custom views)
